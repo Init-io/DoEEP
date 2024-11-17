@@ -120,7 +120,15 @@ More examples can be found in the `examples/` folder.
 - **Returns**: The value associated with the key.  
 
 ### `void flash()`  
-- **Description**: Clears all data from the EEPROM.  
+- **Description**: Clears all data from the EEPROM.
+
+- ### FAQ  
+
+**Q: What happens when EEPROM runs out of space?**  
+A: The library will automatically find the next available space to store new data. If the EEPROM is full, data will not be written until space is freed up.
+
+**Q: Can I store large data in EEPROM?**  
+A: EEPROM typically has a limited size. For large data, consider using an external storage module (e.g., SD card).
 
 ## Contributing  
 
