@@ -29,7 +29,7 @@ This Arduino library provides a simple interface to manage key-value pairs store
 Include the library and initialize it with the desired EEPROM size (in bytes).  
 
 ```cpp
-#include <EBase.h>
+#include <Ebase.h>
 
 // Initialize the library with 512 bytes of EEPROM
 EBase eeprom(512);
