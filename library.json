@@ -1,0 +1,19 @@
+{
+  "name": "Ebase",
+  "version": "v1.0.1",
+  "description": "A simple EEPROM library for reading, writing, and managing key-value pairs.",
+  "keywords": ["EEPROM", "key-value", "data storage"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Init-io/Ebase.git"
+  },
+  "authors": [
+    {
+      "name": "Siam Rayhan",
+      "email": "developers.init.io@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "*"
+}
