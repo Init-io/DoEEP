@@ -1,6 +1,6 @@
 {
   "name": "Ebase",
-  "version": "v1.0.2",
+  "version": "v1.0.3",
   "description": "A simple EEPROM library for reading, writing, and managing key-value pairs.",
   "keywords": ["EEPROM", "key-value", "data storage"],
   "repository": {
