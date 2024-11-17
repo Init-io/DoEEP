@@ -1,4 +1,4 @@
-#include <EBase.h>
+#include <Ebase.h>
 
 EBase eeprom(512); // Initialize EEPROM with 512 bytes
 
