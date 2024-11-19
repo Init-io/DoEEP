@@ -1,0 +1,19 @@
+{
+  "name": "DoEEP",
+  "version": "v2.0.3",
+  "description": "A simple EEPROM library for reading, writing, and managing key-value pairs.",
+  "keywords": ["EEPROM", "key-value", "data storage"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Init-io/DoEEP.git"
+  },
+  "authors": [
+    {
+      "name": "Siam Rayhan",
+      "email": "developers.init.io@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "*"
+}
