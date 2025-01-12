@@ -25,67 +25,74 @@ void DoEEP::write(String key, String value) {
             return;
         }
 
-        // Write the new key and value
         writeToAddress(addr, key);
-
-        int valueAddr = addr + key.length() + 1; // +1 for null terminator
+        int valueAddr = addr + key.length() + 1;
         writeToAddress(valueAddr, value);
     } else {
-        // Update the value if the key exists
         int valueAddr = addr + key.length() + 1;
         writeToAddress(valueAddr, value);
     }
 
-    EEPROM.commit(); // Save changes to EEPROM
+    EEPROM.commit();
 }
 
 // Read a value by its key
 String DoEEP::read(String key) {
     int addr = findKey(key);
     if (addr == -1) {
-        return ""; // Return an empty string if the key is not found
+        return String(); // Return NULL equivalent
     }
-
-    int valueAddr = addr + key.length() + 1; // +1 for null terminator
+    int valueAddr = addr + key.length() + 1;
     return readFromAddress(valueAddr);
 }
 
-// Find the starting address of a key
+// Read with default value
+String DoEEP::read(String key, String defaultValue) {
+    int addr = findKey(key);
+    if (addr == -1) {
+        write(key, defaultValue);
+        return defaultValue;
+    }
+    int valueAddr = addr + key.length() + 1;
+    return readFromAddress(valueAddr);
+}
+
+// Check if a key exists
+bool DoEEP::exists(String key) {
+    return findKey(key) != -1;
+}
+
+// Find key address
 int DoEEP::findKey(String key) {
     for (int addr = 0; addr < _size;) {
         String storedKey = readFromAddress(addr);
-
-        if (storedKey == "") break; // End of EEPROM content
-        if (storedKey == key) return addr; // Key found
-
-        // Skip key and its associated value
-        addr += storedKey.length() + 1; // Skip key
-        addr += readFromAddress(addr).length() + 1; // Skip value
+        if (storedKey == "") break;
+        if (storedKey == key) return addr;
+        addr += storedKey.length() + 1 + readFromAddress(addr + storedKey.length() + 1).length() + 1;
     }
-    return -1; // Key not found
+    return -1;
 }
 
-// Find the next available address in EEPROM
+// Find next available address
 int DoEEP::findNextAvailableAddress() {
     for (int addr = 0; addr < _size; addr++) {
-        if (EEPROM.read(addr) == 0xFF) return addr; // Found empty space
+        if (EEPROM.read(addr) == 0xFF) return addr;
     }
-    return -1; // No available space
+    return -1;
 }
 
-// Write a string to EEPROM
+// Write string to EEPROM
 void DoEEP::writeToAddress(int addr, String data) {
     for (int i = 0; i < data.length(); i++) {
         EEPROM.write(addr + i, data[i]);
     }
-    EEPROM.write(addr + data.length(), '\0'); // Null-terminate the string
+    EEPROM.write(addr + data.length(), '\0');
 }
 
-// Read a string from EEPROM
+// Read string from EEPROM
 String DoEEP::readFromAddress(int addr) {
     String data = "";
     char c;
-
     while ((c = EEPROM.read(addr++)) != '\0' && addr < _size) {
         data += c;
     }
