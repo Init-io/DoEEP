@@ -1,4 +1,7 @@
 # EEPROM Manager Library DoEEP
+[![Arduino Library](https://img.shields.io/badge/Arduino-Library-blue.svg)](https://www.arduino.cc/reference/en/libraries/)
+![GitHub Release](https://img.shields.io/github/v/release/init-io/DoEEP?label=release)
+[![License](https://img.shields.io/github/license/init-io/DoEEP)](LICENSE)
 
 This Arduino library provides a simple interface to manage key-value pairs stored in EEPROM memory. It allows you to store, retrieve, update, and delete data from the EEPROM in a structured and efficient manner.
 
