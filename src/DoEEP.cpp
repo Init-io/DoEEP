@@ -3,7 +3,11 @@
 
 DoEEP::DoEEP(size_t size) {
     _size = size;
-    EEPROM.begin(_size); // Initialize EEPROM
+#ifdef ESP_PLATFORM
+    EEPROM.begin(_size); // Initialize EEPROM for ESP
+#else
+    // No initialization needed for AVR
+#endif
 }
 
 // Flash (clear) the EEPROM
@@ -11,7 +15,9 @@ void DoEEP::flash() {
     for (int i = 0; i < _size; i++) {
         EEPROM.write(i, 0xFF); // Write default erased value
     }
-    EEPROM.commit(); // Save changes
+#ifdef ESP_PLATFORM
+    EEPROM.commit(); // Save changes for ESP
+#endif
 }
 
 // Write a key-value pair to EEPROM
@@ -33,7 +39,9 @@ void DoEEP::write(String key, String value) {
         writeToAddress(valueAddr, value);
     }
 
-    EEPROM.commit();
+#ifdef ESP_PLATFORM
+    EEPROM.commit(); // Save changes for ESP
+#endif
 }
 
 // Read a value by its key
