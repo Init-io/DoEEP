@@ -1,5 +1,5 @@
 # EEPROM Manager Library DoEEP
-[![Arduino Library](https://img.shields.io/badge/Arduino-Library-blue.svg)](https://www.arduino.cc/reference/en/libraries/DoEEP)
+[![Arduino Library](https://img.shields.io/badge/Arduino-Library-blue.svg)](https://docs.arduino.cc/libraries/doeep/?_gl=1*1n8024i*_up*MQ..*_ga*OTc3MDE5NDYxLjE3Mzg2OTIzNDg.*_ga_NEXN8H46L5*MTczODY5MjM0Ni4xLjEuMTczODY5MjM1My4wLjAuNDU4ODMyODky)
 ![GitHub Release](https://img.shields.io/github/v/release/init-io/DoEEP?label=release)
 [![License](https://img.shields.io/github/license/init-io/DoEEP)](LICENSE)
 
